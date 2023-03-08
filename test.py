@@ -1,14 +1,10 @@
-#For Brandt
-# When I change line 11 to "and" instead of or then the code works and breaks when either player hits the value of 2
-# I can get the code to work with a while true loop and while "___ and ___". Just trying to see how to get the "while ___ or ___" to work
-
 import random
 
 print("--------Rock, paper scissors. Best out of 3--------") #initial statement
 player = 0 # assigning win value to player
 enemy = 0 # assigning win value to enemy
 
-while player != 2 or enemy != 2: # loop that breaks when either reach 2 points. BUT its not breaking
+while player != 2 and enemy != 2: # loop that breaks when either reach 2 points. BUT its not breaking
     while True: # while true loop to confirm player input is valid
         player_roll = input(f'R for Rock, P for paper, or S for scissors? ') # taking in user input for game
         confirm = player_roll[0].lower() # Assigning value of player input
