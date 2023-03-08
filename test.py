@@ -1,22 +1,33 @@
 import random
 
-print("--------Rock, paper scissors. Best out of 3--------") #initial statement
-player = 0 # assigning win value to player
-enemy = 0 # assigning win value to enemy
+print("--------Rock, paper scissors. Best of 3--------")
+player = 0
+enemy = 0
 
-while player != 2 and enemy != 2: # loop that breaks when either reach 2 points. BUT its not breaking
-    while True: # while true loop to confirm player input is valid
-        player_roll = input(f'R for Rock, P for paper, or S for scissors? ') # taking in user input for game
-        confirm = player_roll[0].lower() # Assigning value of player input
-        if player_roll == '' or not confirm in ['r','p','s']: # if player input is invalid
-            print('My guy. The options r, p, or s!') # Output reminding player of possible inputs
-        else: # if player input is valid
-            break
-    possible_actions = ["r", "p", "s"] # list of enemy's actions
-    enemy_roll = random.choice(possible_actions) # Randomizing enemy's action and assigning value to enemy_roll
-    if player_roll == enemy_roll: # if both selections match
+while True:
+    player_roll = input(f'R for Rock, P for paper, S for scissors, or Q to quit: ') 
+    confirm = player_roll[0].lower() 
+    if player_roll == '' or not confirm in ['r','p','s','q']: 
+        print('Please answer with r, p, s or q! ')
+    if player_roll == '' or confirm in ['q']:
+        if player > enemy: # if player reaches win parameter and outputs victor
+            print("Thank you for playing")
+            print("You've won this battle. Somehow")
+            print(f"Player points: {player}          Bot points: {enemy}")
+        elif enemy > player: # if enemy reaches win parameter and outputs victor
+            print("Thank you for playing")
+            print("You've lost this battle. Scum")
+            print(f"Player points: {player}          Bot points: {enemy}")
+        elif enemy == player: # if tie parameter is reached and outputs victor
+            print("Thank you for playing")
+            print("We've tied. Unfortunately")
+            print(f"Player points: {player}          Bot points: {enemy}")
+        break
+    possible_actions = ["r", "p", "s"]
+    enemy_roll = random.choice(possible_actions)
+    if player_roll == enemy_roll:
         print("Game Tied")
-    else: # Outputting who won and incrementing their respective count
+    else:
         if player_roll.lower() == "r" and enemy_roll == "s":
             print("You win")
             player += 1
@@ -35,7 +46,3 @@ while player != 2 and enemy != 2: # loop that breaks when either reach 2 points.
         elif player_roll.lower() == "s" and enemy_roll == "p":
             print("You win")
             player += 1 
-    if player == 2: # if player reaches win parameter and outputs victor
-        print("You've won this battle. Somehow")
-    elif enemy ==2: # if enemy reaches win parameter and outputs victor
-        print("You've lost this battle. Scum")
